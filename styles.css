@@ -4,6 +4,7 @@ body {
   height: 100%;
   margin: 0px;
   overflow: hidden;
+  touch-action: none;
 }
 
 #main {
@@ -18,11 +19,30 @@ body {
 }
 
 #content {
-  margin: 8px;
+  margin: 4px;
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  border: 1px solid black;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+}
+.container div {
+  background-color: red;
+  margin: 2px;
+}
+
+.container div::before {
+  content: "";
+  padding-bottom: 100%;
+  display: inline-block;
+  vertical-align: top;
+}
+
+.foo {
+  border: 5px solid black;
 }

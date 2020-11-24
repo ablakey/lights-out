@@ -1,14 +1,12 @@
 {
-  "name": "lights-out",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "start": "python3 -m http.server"
-  },
-  "author": "",
-  "license": "ISC",
-  "devDependencies": {
-    "standard": "^16.0.3"
-  }
+    "name": "lights-out",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "start": "python3 -m http.server"
+    },
+    "author": "",
+    "license": "ISC",
+    "prettier": {}
 }
