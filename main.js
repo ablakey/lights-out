@@ -1,7 +1,7 @@
 function main() {
-  for (let x = 0; x < 42; x++) {
+  for (let x = 0; x < 48; x++) {
     const element = document.createElement("div");
-    element.onclick = () => element.classList.toggle("foo");
+    element.onclick = () => element.classList.toggle("active");
 
     document.querySelector(".container").appendChild(element);
   }

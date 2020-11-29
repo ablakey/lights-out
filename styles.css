@@ -32,8 +32,9 @@ body {
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
 }
 .container div {
-  background-color: red;
+  background-color: lightgray;
   margin: 2px;
+  transition: background-color 500ms;
 }
 
 .container div::before {
@@ -43,6 +44,11 @@ body {
   vertical-align: top;
 }
 
-.foo {
-  border: 5px solid black;
+.active {
+  background-color: darkblue !important;
+}
+
+.title {
+  width: 100%;
+  text-align: center;
 }
