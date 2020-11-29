@@ -29,7 +29,7 @@ body {
 
 .container {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
 }
 .container div {
   background-color: lightgray;
@@ -45,7 +45,11 @@ body {
 }
 
 .active {
-  background-color: darkblue !important;
+  background-color: darkgreen !important;
+}
+
+.hidden {
+  background-color: white !important;
 }
 
 .title {
