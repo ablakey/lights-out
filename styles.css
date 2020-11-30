@@ -52,7 +52,24 @@ body {
   background-color: white !important;
 }
 
+.none {
+  opacity: 0;
+}
+
 .title {
   width: 100%;
   text-align: center;
+}
+
+.levelName {
+  display: block;
+  pointer-events: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  text-align: center;
+  font-size: 48pt;
+  font-family: fantasy;
+  transform: translate(-50%, -50%);
+  transition: opacity 500ms;
 }

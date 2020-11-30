@@ -1,15 +1,24 @@
-const levels = [
-  [12, 16, 17, 18, 22],
-  [0, 5, 47, 42],
-  [12, 16, 17, 18, 22],
-  [12, 16, 17, 18, 22],
-];
 const rows = 7;
 const cols = 5;
+const levels = [
+  [12, 16, 17, 18, 22],
+  [1, 5, 6, 7, 11, 12, 16, 17, 18, 22, 23, 27, 28, 29, 33],
+];
 
 // Game state.
-const level = 0;
-const elements = [];
+let level = 0;
+let elements = [];
+let acceptInput = true;
+
+function toggleLevelName(newName) {
+  const element = document.querySelector(".levelName");
+
+  if (newName !== undefined) {
+    element.innerHTML = newName;
+  }
+
+  element.classList.toggle("none");
+}
 
 function getActiveCells() {
   return elements
@@ -18,16 +27,20 @@ function getActiveCells() {
 }
 
 function handleWinCondition() {
+  acceptInput = false;
   // Hide all elements.
   elements.forEach((e, i) =>
     setTimeout(() => e.classList.toggle("hidden"), 300 + 25 * i)
   );
+
+  // Start next level after a small delay.
+  setTimeout(() => {
+    level++;
+    toggleLevelName(level < levels.length ? `Level ${level + 1}` : "You Win!");
+    initialize();
+  }, 1500);
 }
 
-/**
- * Get the cells that need to be toggled given a target cell.
- * This is where the game's rules will be encoded.
- */
 function getToggleCells(cell) {
   const col = cell % cols;
 
@@ -41,6 +54,10 @@ function getToggleCells(cell) {
 }
 
 function handleClick(cell) {
+  if (!acceptInput) {
+    return;
+  }
+
   // Get cells that should be toggled and toggle them.
   const toToggle = getToggleCells(cell);
   toToggle.forEach((c) => {
@@ -54,24 +71,31 @@ function handleClick(cell) {
 }
 
 function initialize() {
+  // Clear any previous DOM state.
+  document.querySelector(".container").innerHTML = "";
+  elements = [];
+
   // Populate grid and set up DOM events.
   for (let cell = 0; cell < rows * cols; cell++) {
     const element = document.createElement("div");
     document.querySelector(".container").appendChild(element);
     element.onclick = () => handleClick(cell);
+    element.classList.toggle("hidden");
     elements.push(element);
 
+    // Set the cells that begin active.
     if (levels[level].includes(cell)) {
       element.classList.toggle("active");
     }
+
+    // Unhide and hide level name.
+    setTimeout(toggleLevelName, 2000);
+    setTimeout(() => element.classList.toggle("hidden"), 2000 + cell * 25);
+    setTimeout(() => (acceptInput = true), 2000 + 25 * rows * cols);
   }
 
   // Set up application state.
   state = new Array(cols * rows).fill(false);
 }
 
-function main() {
-  initialize();
-}
-
-window.onload = main;
+window.onload = initialize;
