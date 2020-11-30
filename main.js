@@ -2,6 +2,9 @@ const rows = 7;
 const cols = 5;
 const levels = [
   [12, 16, 17, 18, 22],
+  [2, 6, 7, 8, 12, 22, 26, 27, 28, 32],
+  [7, 11, 13, 16, 18, 22],
+  [10, 14, 15, 16, 18, 19, 20, 24],
   [1, 5, 6, 7, 11, 12, 16, 17, 18, 22, 23, 27, 28, 29, 33],
 ];
 
@@ -30,7 +33,7 @@ function handleWinCondition() {
   acceptInput = false;
   // Hide all elements.
   elements.forEach((e, i) =>
-    setTimeout(() => e.classList.toggle("hidden"), 300 + 25 * i)
+    setTimeout(() => e.classList.toggle("none"), 300 + 25 * i)
   );
 
   // Start next level after a small delay.
@@ -80,7 +83,7 @@ function initialize() {
     const element = document.createElement("div");
     document.querySelector(".container").appendChild(element);
     element.onclick = () => handleClick(cell);
-    element.classList.toggle("hidden");
+    element.classList.toggle("none");
     elements.push(element);
 
     // Set the cells that begin active.
@@ -89,9 +92,9 @@ function initialize() {
     }
 
     // Unhide and hide level name.
-    setTimeout(toggleLevelName, 2000);
-    setTimeout(() => element.classList.toggle("hidden"), 2000 + cell * 25);
-    setTimeout(() => (acceptInput = true), 2000 + 25 * rows * cols);
+    setTimeout(toggleLevelName, 1500);
+    setTimeout(() => element.classList.toggle("none"), 1500 + cell * 25);
+    setTimeout(() => (acceptInput = true), 1500 + 25 * rows * cols);
   }
 
   // Set up application state.

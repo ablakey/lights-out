@@ -34,7 +34,7 @@ body {
 .container div {
   background-color: lightgray;
   margin: 2px;
-  transition: background-color 500ms;
+  transition: opacity 300ms, background-color 300ms;
 }
 
 .container div::before {
@@ -48,10 +48,6 @@ body {
   background-color: darkgreen !important;
 }
 
-.hidden {
-  background-color: white !important;
-}
-
 .none {
   opacity: 0;
 }
@@ -63,6 +59,7 @@ body {
 
 .levelName {
   display: block;
+  width: 100%;
   pointer-events: none;
   position: absolute;
   top: 50%;
