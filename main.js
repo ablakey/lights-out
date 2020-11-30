@@ -6,6 +6,11 @@ const levels = [
   [7, 11, 13, 16, 18, 22],
   [10, 14, 15, 16, 18, 19, 20, 24],
   [1, 5, 6, 7, 11, 12, 16, 17, 18, 22, 23, 27, 28, 29, 33],
+  [1, 2, 3, 5, 7, 9, 11, 12, 13, 21, 22, 23, 25, 27, 29, 31, 32, 33],
+  [0, 4, 6, 8, 11, 13, 21, 23, 26, 28, 30, 34],
+  [5, 7, 9, 10, 14, 16, 18, 20, 21, 22, 23, 24, 25, 29],
+  [1, 3, 5, 6, 8, 9, 10, 11, 13, 14, 15, 16, 18, 19, 20, 21, 23, 24, 25, 26, 28, 29, 31, 33],
+  [0, 2, 4, 6, 7, 8, 12, 16, 17, 18, 22, 26, 27, 28, 30, 32, 34],
 ];
 
 // Game state.
@@ -24,17 +29,13 @@ function toggleLevelName(newName) {
 }
 
 function getActiveCells() {
-  return elements
-    .map((e, idx) => (e.classList.contains("active") ? idx : -1))
-    .filter((e) => e !== -1);
+  return elements.map((e, idx) => (e.classList.contains("active") ? idx : -1)).filter((e) => e !== -1);
 }
 
 function handleWinCondition() {
   acceptInput = false;
   // Hide all elements.
-  elements.forEach((e, i) =>
-    setTimeout(() => e.classList.toggle("none"), 300 + 25 * i)
-  );
+  elements.forEach((e, i) => setTimeout(() => e.classList.toggle("none"), 300 + 25 * i));
 
   // Start next level after a small delay.
   setTimeout(() => {
