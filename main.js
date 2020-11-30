@@ -28,13 +28,8 @@ function toggleLevelName(newName) {
   element.classList.toggle("none");
 }
 
-function getActiveCells() {
-  return elements.map((e, idx) => (e.classList.contains("active") ? idx : -1)).filter((e) => e !== -1);
-}
-
 function handleWinCondition() {
   acceptInput = false;
-  // Hide all elements.
   elements.forEach((e, i) => setTimeout(() => e.classList.toggle("none"), 300 + 25 * i));
 
   // Start next level after a small delay.
@@ -55,6 +50,10 @@ function getToggleCells(cell) {
     col < cols - 1 ? cell + 1 : -1, // Right
     col > 0 ? cell + -1 : -1, // Left
   ].filter((c) => c >= 0 && c < rows * cols); // Remove values outside grid.
+}
+
+function getActiveCells() {
+  return elements.map((e, idx) => (e.classList.contains("active") ? idx : -1)).filter((e) => e !== -1);
 }
 
 function handleClick(cell) {
